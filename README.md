@@ -1,9 +1,15 @@
-# Unveiling the Hidden Strengths: Exploring the Evolution of Pokémon Battling
+![Screenshot_20230717_230315](https://github.com/algorand-hackers/chain-hopper/assets/58889001/7f95fbba-90e6-4c45-8cde-2d5272566d48)
 
-## Introduction
-In the world of Pokémon, trainers strive to become the very best by assembling powerful teams of Pokémon and engaging in thrilling battles. But what makes a Pokémon truly strong? Join us on a journey through the data as we uncover the hidden strengths of Pokémon and delve into the evolution of battling strategies.
 
-## Sections
+## Thought process behind the Project
+Pokémon, a beloved cartoon series, has captured the hearts of fans across all age groups. The diverse range of Pokémon, each with its unique powers and abilities, coupled with the captivating journeys alongside their trainers, make for an incredibly fascinating experience.
+
+In line with this enthusiasm, a remarkable project was born during the AngelHack hackathon—a Pokémon Dashboard created from scratch. This initiative aimed to bring together the world of Pokémon into a comprehensive and interactive platform.
+
+Through this project, passionate Pokémon enthusiasts can immerse themselves in the fascinating details of their favorite Pokémon, discover their strengths and weaknesses, and gain a deeper understanding of the intricate mechanics within the Pokémon universe.
+
+
+## Data Story
 
 ### Section 1: Unleashing the Powerhouses
 - Visualize the distribution of Pokémon types and highlight the most common and rare types.
@@ -28,4 +34,19 @@ In the world of Pokémon, trainers strive to become the very best by assembling 
 ## Note
 - The Pokémon dataset used for this analysis might be limited, as it lacks a "Generation" column, preventing us from visualizing the Pokémon evolution effectively. This "Generation" information is crucial for tracing the evolution paths of popular Pokémon and showcasing the changes in their stats over time.
 - Despite this limitation, we have made every effort to present comprehensive insights into the strengths and evolution of Pokémon battling strategies based on the available data.
+
+## Tools used
+   ![Screenshot_20230717_231154](https://github.com/algorand-hackers/chain-hopper/assets/58889001/a8f8c6ed-d2c8-421b-bb7a-e1cb571d6afc)
+
+
+## Datasets Used
+
+Pokemon Details: The  dataset used contains various details like types, Speed, attack score, HP score, defence score, ability towards different types of pokemon, and their images.
+
+Pokemon types images: The dataset contains various images of the types of Pokemons example: water, fire, grass, electric, etc.
+
+Pokemon Datasets Description: The dataset which has the description about the various Pokemons.
+
+
+
 
