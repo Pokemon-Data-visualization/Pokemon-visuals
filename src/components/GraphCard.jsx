@@ -1,45 +1,41 @@
 import React, { useState } from 'react';
 import Image from "next/image";
+import { TopWrap, ButtonWrap } from '@/assets/Images';
+
 const GraphCard = ({ name, number, story, toggleExpand }) => {
-  const [isExpanded, setIsExpanded] = useState(false); // Set it to true to show expanded by default
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpandStory = () => {
     setIsExpanded(!isExpanded);
   };
 
   return (
-    <div className="max-w-4xl w-full mx-auto bg-white rounded-lg overflow-hidden shadow-lg mb-4">
-      {/* Card Header */}
-      <div className="px-6 py-4 bg-gray-800 text-white">
-        <h3 className="text-xl font-semibold">{name}</h3>
-      </div>
-
-      {/* Card Image */}
-      <div className="w-full h-80 bg-gray-100 relative">
-        <img
-          src={`/images/pokemon-cards/${number}.png`}
-          alt={name}
-          className="w-full h-full object-contain"
-        />
-      </div>
-
-      {/* Card Body */}
-      <div className="px-6 py-4">
-        <div className={`${isExpanded ? 'block' : 'hidden'}`}>
-          <p className="text-gray-800 text-lg">{story}</p>
+    <div className="w-full lg:w-[40rem] mx-auto relative">
+      <Image src={TopWrap} alt="top" />
+      <div className="relative -top-5 py-4 px-3 bg-white">
+        <p className="text-center">Graph Name: {name}</p>
+        <div className="w-full h-80 bg-gray-100 relative">
+          <img
+            src={`/images/pokemon-cards/${number}.png`}
+            alt={name}
+            className="w-full h-full object-contain"
+          />
         </div>
-        <div className="flex justify-end mt-4">
+        <div className={`fcc space-x-2 ${isExpanded ? "block" : "hidden"}`}>
+          <p>{story}</p>
+        </div>
+        <div className="card-actions justify-center">
           <button
-            className="font-semibold uppercase text-sm rounded-full px-4 py-1 border border-[#00000040] text-blue-500"
+            className="font-semibold uppercase text-xs rounded-full px-4 py-1 border border-[#00000040]"
             onClick={toggleExpandStory}
           >
             {isExpanded ? 'Hide Story' : 'Show Story'}
           </button>
         </div>
       </div>
+      <Image className="z-[1] relative -top-7" src={ButtonWrap} alt="bottom" />
     </div>
   );
 };
 
 export default GraphCard;
-

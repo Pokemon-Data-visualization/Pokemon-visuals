@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { AngelHack, Pokemon, Pokem, Type } from "../assets/Images";
 import Pagination from "../components/Pagination";
@@ -11,10 +11,15 @@ import Link from "next/link";
 const ITEMS_PER_PAGE = 2;
 
 const Dashboard = () => {
+  const [showPopup, setShowPopup] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -48,8 +53,25 @@ const Dashboard = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
+  
 
+  useEffect(() => {
+    // Check if the user is on the last page after each pagination change
+    if (currentPage === Math.ceil(GraphData.length / ITEMS_PER_PAGE)) {
+      // Set a delay of 5 seconds before showing the popup
+      const timeout = setTimeout(() => {
+        setShowPopup(true);
+      }, 5000);
+
+      // Clear the timeout when the component is unmounted or the page changes
+      return () => clearTimeout(timeout);
+    } else {
+      // If the user moves to a different page, hide the popup
+      setShowPopup(false);
+    }
+  }, [currentPage]);
   return (
     <>
       <main className="mt-[3em] md:mt-[5em] space-y-[4em] md:space-y-[6em] lg:space-y-[8em] ">
@@ -70,20 +92,19 @@ const Dashboard = () => {
             alt="pokemon"
             className="w-[380px] h-[100px] md:w-[250px] md:h-[100px] lg:w-[700px] lg:h-[100px] pr-2 mt-8 mx-auto "
           />
- <div className="relative ml-20 mt-8">
-      <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-        <FiSearch className="text-gray-600" size={20} />
-      </span>
+ <div className=" mx-auto mt-8 flex justify-center items-center">
+        <FiSearch className="text-gray-600 mr-4" size={20} />
+     
       <input
         type="text"
         placeholder="Search data sets.."
         value={searchQuery}
         onChange={handleInputChange}
-        className="pl-10 pr-3 py-2 w-64 bg-transparent focus:outline-none focus:border-blue-500 placeholder-gray-900"
+        className="bg-transparent focus:outline-none focus:border-blue-500 placeholder-gray-900"
       />
       <button
         onClick={handleSearch}
-        className="ml-2 px-4 py-2 text-white bg-blue-500 rounded-md"
+        className="px-4 py-2 text-white bg-blue-500 rounded-md"
       >
         Search
       </button>
@@ -109,7 +130,7 @@ const Dashboard = () => {
       <select
         value={selectedCategory}
         onChange={handleCategoryChange}
-        className="block mt-6 w-[60%] ml-20 px-4 py-2 pr-8 leading-tight bg-transparent border border-gray-400 rounded focus:outline-none focus:border-blue-500"
+        className="block mt-6 w-[60%] mx-auto px-4 py-2 pr-8 leading-tight bg-transparent border border-gray-400 rounded focus:outline-none focus:border-blue-500"
       >
         <option value="">All category...</option>
         {GraphData.map((graph) => (
@@ -118,23 +139,7 @@ const Dashboard = () => {
           </option>
         ))}
       </select>
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-600">
-        {/* SVG Icon for Dropdown Arrow */}
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M19 9l-7 7-7-7"
-          ></path>
-        </svg>
-      </div>
+     
     </div>
         </div>
 
@@ -155,15 +160,24 @@ const Dashboard = () => {
         onPageChange={handlePageChange}
       />
        <div className="w-fit mx-auto mt-14">
-      <Image
-        src={Type}
-        alt="Your Image"
-       
-      />
+     
       
     </div>
     </div>
-   
+    {showPopup && (
+          <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[rgba(0,0,0,0.8)] z-50">
+            <div className="  animate-bounce">
+              <Image src={Type} alt="Your Image" />
+              <button
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
+                onClick={() => setShowPopup(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+
       </main>
     </>
   );
