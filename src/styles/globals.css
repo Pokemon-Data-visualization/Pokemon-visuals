@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #ffcc00;
+}
+@layer components {
+  .wrapper {
+    @apply px-3 md:px-6 xl:w-[90%] mx-auto py-2;
+  }
+  .fcc {
+    @apply flex justify-center items-center;
+  }
+  .fc {
+    @apply flex items-center;
+  }
+  .fbc {
+    @apply flex justify-between items-center;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: "Inter", sans-serif;
+}
