@@ -47,7 +47,7 @@ Pokemon types images: The dataset contains various images of the types of Pokemo
 
 Pokemon Datasets Description: The dataset which has the description about the various Pokemons.
 
-- [Demo](https://github.com/EnebeliEmmanuel/pokemon-V/assets/58889001/f47c2d77-d3f1-4b9c-8217-dfbdd474ff45)
+- [Demo](https://drive.google.com/file/d/1Q9AHTAyRxB4I8yetCRH9ghZy0tipb07U/view?usp=sharing)
 - [Frontend Deployment](https://pokemon-v.vercel.app/)
 - [Figma design](https://www.figma.com/file/NBvzxfpVrFtDxJjbmqAkQF/ML-Dashboard?type=design&node-id=0-1&mode=design&t=kmqqHGeUXKDGm1mI-0)
 - [Pokemon Analysis](https://github.com/Pokemon-Data-visualization/Pokemon-visuals/blob/main/Pokemon%20Analysis.ipynb)
