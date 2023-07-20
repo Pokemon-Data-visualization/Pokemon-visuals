@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 
-const GraphCard = ({ name, number, story, closeModal }) => {
+const GraphCard = ({ name, number, story }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -17,11 +16,10 @@ const GraphCard = ({ name, number, story, closeModal }) => {
 
       {/* Card Image */}
       <div className="w-full h-80 bg-gray-100 relative">
-        <Image
+        <img
           src={`/images/pokemon-cards/${number}.png`}
           alt={name}
-          layout="fill"
-          objectFit="contain"
+          className="w-full h-full object-contain"
         />
       </div>
 
@@ -41,8 +39,6 @@ const GraphCard = ({ name, number, story, closeModal }) => {
           </button>
         </div>
       </div>
-
-      
     </div>
   );
 };
