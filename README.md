@@ -50,5 +50,4 @@ Pokemon Datasets Description: The dataset which has the description about the va
 - [Demo]()
 - [Frontend Deployment](https://pokemon-v.vercel.app/)
 - [Figma design](https://www.figma.com/file/NBvzxfpVrFtDxJjbmqAkQF/ML-Dashboard?type=design&node-id=0-1&mode=design&t=kmqqHGeUXKDGm1mI-0)
-
-
+- [Pokemon Analysis](https://github.com/Pokemon-Data-visualization/Pokemon-visuals/blob/main/Pokemon%20Analysis.ipynb)
