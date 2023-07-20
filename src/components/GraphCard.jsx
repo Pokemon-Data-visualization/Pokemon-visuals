@@ -13,7 +13,7 @@ const GraphCard = ({ name, number, story, toggleExpand }) => {
     <div className="w-full lg:w-[40rem] mx-auto relative">
       <Image src={TopWrap} alt="top" />
       <div className="relative -top-5 py-4 px-3 bg-white">
-        <p className="text-center">Graph Name: {name}</p>
+        <p className=""> {name}</p>
         <div className="w-full h-80 bg-gray-100 relative">
           <img
             src={`/images/pokemon-cards/${number}.png`}

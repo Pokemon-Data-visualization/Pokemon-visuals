@@ -168,13 +168,14 @@ const Dashboard = () => {
           <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-[rgba(0,0,0,0.8)] z-50">
             <div className="  animate-bounce">
               <Image src={Type} alt="Your Image" />
-              <button
+          
+            </div>
+            <button
                 className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
                 onClick={() => setShowPopup(false)}
               >
                 Close
               </button>
-            </div>
           </div>
         )}
 

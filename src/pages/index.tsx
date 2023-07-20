@@ -30,7 +30,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <HeroImage className="hidden md:block w-[50%] h-[300px] xl:h-[400px]" />
+        <HeroImage className="hidden md:block w-[70%] h-[400px] xl:h-[600px] ml-8" />
       </header>
 
       <section className="space-y-[1em] md:space-y-[2em]">
