@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { AngelHack, Pokemon, Pokem } from "../assets/Images";
+import { AngelHack, Pokemon, Pokem, Type } from "../assets/Images";
+import Pagination from "../components/Pagination";
 import Logo from "@/assets/Logo";
 import GraphCard from "@/components/GraphCard";
 import { GraphData } from "@/utils/GraphData";
 import { FiSearch } from "react-icons/fi";
+import Link from "next/link";
+
+const ITEMS_PER_PAGE = 2;
 
 const Dashboard = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -35,17 +39,28 @@ const Dashboard = () => {
   const toggleExpand = () => {
     setSelectedGraph(null);
   };
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentGraphs = GraphData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
       <main className="mt-[3em] md:mt-[5em] space-y-[4em] md:space-y-[6em] lg:space-y-[8em] ">
         <div className="w-fit mx-auto  flex-column items-center">
+          <Link href="/">
           <div className=" fc w-fit  mx-auto">
             <Pokemon className="w-[80px] h-[40px] md:w-[120px] md:h-[60px] lg:w-[130px] lg:h-[60px] pr-2  " />
             <div className="w-[2px] h-[50px] bg-[#0000003d]"></div>
             <AngelHack className="w-[80px] h-[40px] md:w-[120px] md:h-[60px] lg:w-[130px] lg:h-[60px] pr-2  " />
           </div>
+          </Link>
           <p className="text-center text-[1.125rem] mt-6 font-[500]">
             Data Visualization Challenge
           </p>
@@ -123,18 +138,32 @@ const Dashboard = () => {
     </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 ">
-          {GraphData.map((i, j) => {
-            return (
-              <GraphCard
-                name={i.name}
-                number={i.number}
-                story={i.story}
-                key={j}
-              />
-            );
-          })}
-        </div>
+       
+        <div className="flex flex-col items-center">
+      {currentGraphs.map((graph) => (
+        <GraphCard
+          key={graph.id}
+          name={graph.name}
+          number={graph.number}
+          story={graph.story}
+        />
+      ))}
+      <Pagination
+        totalItems={GraphData.length}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
+       <div className="w-fit mx-auto mt-14">
+      <Image
+        src={Type}
+        alt="Your Image"
+       
+      />
+      
+    </div>
+    </div>
+   
       </main>
     </>
   );
